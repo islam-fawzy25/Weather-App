@@ -50,7 +50,7 @@ const getWeather = function () {
           message.style.visibility = "visible";
           message.style.backgroundColor = "red";
           message.innerText = "Invalid city name";
-          return
+          return;
         }
       })
       .then((weatherData) => readData(weatherData));
@@ -58,33 +58,33 @@ const getWeather = function () {
 };
 // get and print weather data on DOM
 function readData(data) {
-    if(data === undefined){return}
-    else{
-         //print datat in elements
-  cityName.innerText = data.name + " " + data.sys.country;
-  temperature.innerText = Math.round(data.main.temp) + " °C";
-  weatherType.innerText = data.weather[0].description;
-  windSpeed.innerText = "Wind Speed :  " + Math.round(data.wind.speed) + " M/S";
-  // clouds.innerText = 'Clouds :  ' + data.clouds.all
-  sunrise.innerText =
-    "Sunrise   " +
-    new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  sunset.innerText =
-    "Sunset   " +
-    new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  iconElement.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-  // location variable and calling back map function
-  let latData = data.coord.lat;
-  let lngData = data.coord.lon;
-
-    }
- 
+  if (data === undefined) {
+    return;
+  } else {
+    //print datat in elements
+    cityName.innerText = data.name + " " + data.sys.country;
+    temperature.innerText = Math.round(data.main.temp) + " °C";
+    weatherType.innerText = data.weather[0].description;
+    windSpeed.innerText =
+      "Wind Speed :  " + Math.round(data.wind.speed) + " M/S";
+    // clouds.innerText = 'Clouds :  ' + data.clouds.all
+    sunrise.innerText =
+      "Sunrise   " +
+      new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    sunset.innerText =
+      "Sunset   " +
+      new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    iconElement.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    // location variable and calling back map function
+    let latData = data.coord.lat;
+    let lngData = data.coord.lon;
+  }
 }
 
 // call weather data with click on button
