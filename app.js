@@ -1,5 +1,4 @@
-///api.openweathermap
-const ApiKey = "0904bdb6c689df374189c5ab06c21df6 ";
+
 
 //get elements
 const button = document.getElementById("button");
